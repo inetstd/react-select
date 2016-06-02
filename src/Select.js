@@ -863,11 +863,21 @@ var Select = React.createClass({
 		} else if (!this.props.multi || !this.state.values.length) {
 			input = <div className="Select-input">&nbsp;</div>;
 		}
+  		var longest = "";
+        var options = this.state.options;
+        for (var i in options) {
+            if (options[i].label.length > longest.length) {
+                longest = options[i].label.length;
+            }
+        }
+
+
 
 		return (
 			<div ref="wrapper" className={selectClass}>
 				<input type="hidden" ref="value" name={this.props.name} value={this.state.value} disabled={this.props.disabled} />
 				<div className="Select-control" ref="control" onKeyDown={this.handleKeyDown} onMouseDown={this.handleMouseDown} onTouchEnd={this.handleMouseDown}>
+					<span className="Select-resizer-hack">{longest}</span>
 					{value}
 					{input}
 					<span className="Select-arrow-zone" onMouseDown={this.handleMouseDownOnArrow} onTouchEnd={this.handleMouseDownOnArrow}/>
