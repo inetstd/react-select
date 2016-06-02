@@ -867,7 +867,7 @@ var Select = React.createClass({
         var options = this.state.options;
         for (var i in options) {
             if (options[i].label.length > longest.length) {
-                longest = options[i].label.length;
+                longest = options[i].label;
             }
         }
 
